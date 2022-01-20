@@ -8,9 +8,14 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject var authenticationManager = AuthenticationManager()
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            LoginView()
+                .environmentObject(authenticationManager)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 

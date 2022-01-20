@@ -15,6 +15,7 @@
 		E16B48FE27996C1E00D41995 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B48FD27996C1E00D41995 /* PrimaryButton.swift */; };
 		E16B490127996D2E00D41995 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B490027996D2E00D41995 /* LoginView.swift */; };
 		E16B490327996E9B00D41995 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B490227996E9B00D41995 /* AuthenticationManager.swift */; };
+		E16B49052799919600D41995 /* CredentialLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B49042799919600D41995 /* CredentialLoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		E16B48FD27996C1E00D41995 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		E16B490027996D2E00D41995 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		E16B490227996E9B00D41995 /* AuthenticationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		E16B49042799919600D41995 /* CredentialLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CredentialLoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				E16B48EE2798D90600D41995 /* ContentView.swift */,
 				E16B490027996D2E00D41995 /* LoginView.swift */,
+				E16B49042799919600D41995 /* CredentialLoginView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -167,6 +170,7 @@
 			files = (
 				E16B48EF2798D90600D41995 /* ContentView.swift in Sources */,
 				E16B48FC2798DA0200D41995 /* Title.swift in Sources */,
+				E16B49052799919600D41995 /* CredentialLoginView.swift in Sources */,
 				E16B48FE27996C1E00D41995 /* PrimaryButton.swift in Sources */,
 				E16B490327996E9B00D41995 /* AuthenticationManager.swift in Sources */,
 				E16B490127996D2E00D41995 /* LoginView.swift in Sources */,

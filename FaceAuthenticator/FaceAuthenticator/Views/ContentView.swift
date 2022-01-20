@@ -18,6 +18,10 @@ struct ContentView: View {
                         
                         Text("Welcome in! you are now authenticated.")
                             .foregroundColor(.white)
+                        PrimaryButton(showImage: false, text: "Logout")
+                            .onTapGesture {
+                                authenticationManager.logout()
+                            }
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(LinearGradient(colors: [.blue,

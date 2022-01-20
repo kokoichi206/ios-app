@@ -9,8 +9,22 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        ZStack {
+            // MARK: Background
+            
+            Color(#colorLiteral(red: 0.03641154245, green: 0.005049427971, blue: 0.06040825695, alpha: 1))
+                .ignoresSafeArea()
+            
+            content
+        }
+    }
+    
+    var content: some View {
+        VStack {
+            // MARK: Progress Ring
+            
+            ProgressRing()
+        }
     }
 }
 

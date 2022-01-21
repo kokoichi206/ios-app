@@ -50,12 +50,28 @@ struct BaseView: View {
                     Image(systemName: "plus")
                         .font(.system(size: 20, weight: .bold))
                         .foregroundColor(.white)
+                        .padding(22)
+                        .background(
+                        
+                            Circle()
+                                .fill(Color.green)
+                            // Shadow...
+                                .shadow(color: Color.green.opacity(0.15), radius: 5, x: 0, y: 8)
+                        )
                 }
+                // Moving Button little up
+                .offset(y: -20)
+                .padding(.horizontal, -15)
                 
                 TabButton(image: "equal.square.fill")
                 TabButton(image: "gearshape.fill")
             }
-//            .foregroundColor(Color.black)
+            .frame(maxWidth: .infinity)
+            .background(
+            
+                Color.green.opacity(0.1)
+                    .ignoresSafeArea()
+            )
         }
     }
     
@@ -86,3 +102,4 @@ struct BaseView_Previews: PreviewProvider {
         BaseView()
     }
 }
+

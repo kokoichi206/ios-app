@@ -25,7 +25,7 @@ struct BaseView: View {
             // Tab View..
             TabView(selection: $currentTab) {
                 
-                Text("Home")
+                Home()
                     .modifier(BGModifier())
                     .tag("house")
                 

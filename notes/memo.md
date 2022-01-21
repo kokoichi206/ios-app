@@ -6,6 +6,7 @@ Every @State is a source of truth
 ## XCode 操作
 Command + R: Rebuild
 
+Color Palette: Edit -> Format -> Show Colors
 
 
 ## Code

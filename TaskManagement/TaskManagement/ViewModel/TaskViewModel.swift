@@ -12,8 +12,12 @@ class TaskViewModel: ObservableObject {
     // Sample Tasks
     @Published var storedTasks: [Task] = [
     
-        Task(taskTitle: "Meeting", taskDescription: "Discuss team task for the day", taskDate: .init(timeIntervalSince1970: 1641645497)),
-        Task(taskTitle: "Icon set", taskDescription: "Edit icons for team task for next week", taskDate: .init(timeIntervalSince1970: 1641649097)),
+        Task(taskTitle: "Meeting", taskDescription: "Discuss team task for the day", taskDate: .init(timeIntervalSince1970: 1642781863)),
+        Task(taskTitle: "Icon set", taskDescription: "Edit icons for team task for next week", taskDate: .init(timeIntervalSince1970: 1642761863)),
+        Task(taskTitle: "Eat lamen", taskDescription: "Eat lamen every single day", taskDate: .init(timeIntervalSince1970: 1642781003)),
+        Task(taskTitle: "Study AWS", taskDescription: "Study about aws. Deploy something.", taskDate: .init(timeIntervalSince1970: 1642780863)),
+        Task(taskTitle: "Read book", taskDescription: "Read 'Software engineering at Google'", taskDate: .init(timeIntervalSince1970: 1642785863)),
+        Task(taskTitle: "Weight training", taskDescription: "Muscle can solve everything.", taskDate: .init(timeIntervalSince1970: 1642789863)),
     ]
     
     // MARK: Current Week Days
@@ -28,6 +32,29 @@ class TaskViewModel: ObservableObject {
     // MARK: Initializing
     init() {
         fetchCurrentWeek()
+        filterTodayTasks()
+    }
+    
+    // MARK: Filter Today Tasks
+    func filterTodayTasks() {
+        
+        DispatchQueue.global(qos: .userInteractive).async {
+            
+            let calendar = Calendar.current
+            
+            let filterd = self.storedTasks.filter {
+                return calendar.isDate($0.taskDate, inSameDayAs: self.currentDay)
+            }
+                .sorted { task1, task2 in
+                    return task2.taskDate < task1.taskDate
+                }
+            
+            DispatchQueue.main.async {
+                withAnimation {
+                    self.filterdTasks = filterd
+                }
+            }
+        }
     }
     
     func fetchCurrentWeek() {
@@ -64,5 +91,16 @@ class TaskViewModel: ObservableObject {
         let calendar = Calendar.current
         
         return calendar.isDate(currentDay, inSameDayAs: date)
+    }
+    
+    // MARK: Checking if the currentHour is task Hour
+    func isCurrentHour(date: Date) -> Bool {
+        
+        let calendar = Calendar.current
+        
+        let hour = calendar.component(.hour, from: date)
+        let currentHour = calendar.component(.hour, from: Date())
+        
+        return hour == currentHour
     }
 }

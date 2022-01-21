@@ -11,6 +11,9 @@
 		E16B4971279ADC5000D41995 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B4970279ADC5000D41995 /* ContentView.swift */; };
 		E16B4973279ADC5200D41995 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16B4972279ADC5200D41995 /* Assets.xcassets */; };
 		E16B4976279ADC5200D41995 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E16B4975279ADC5200D41995 /* Preview Assets.xcassets */; };
+		E16B497F279ADCC200D41995 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B497E279ADCC200D41995 /* Task.swift */; };
+		E16B4982279ADD3E00D41995 /* TaskViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B4981279ADD3E00D41995 /* TaskViewModel.swift */; };
+		E16B4984279ADDC400D41995 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = E16B4983279ADDC400D41995 /* Home.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +22,9 @@
 		E16B4970279ADC5000D41995 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		E16B4972279ADC5200D41995 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E16B4975279ADC5200D41995 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E16B497E279ADCC200D41995 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
+		E16B4981279ADD3E00D41995 /* TaskViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskViewModel.swift; sourceTree = "<group>"; };
+		E16B4983279ADDC400D41995 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +57,9 @@
 		E16B496D279ADC5000D41995 /* TaskManagement */ = {
 			isa = PBXGroup;
 			children = (
+				E16B4980279ADD2600D41995 /* ViewModel */,
+				E16B497D279ADCAC00D41995 /* Model */,
+				E16B497C279ADC9E00D41995 /* View */,
 				E16B496E279ADC5000D41995 /* TaskManagementApp.swift */,
 				E16B4970279ADC5000D41995 /* ContentView.swift */,
 				E16B4972279ADC5200D41995 /* Assets.xcassets */,
@@ -65,6 +74,30 @@
 				E16B4975279ADC5200D41995 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E16B497C279ADC9E00D41995 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E16B4983279ADDC400D41995 /* Home.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E16B497D279ADCAC00D41995 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				E16B497E279ADCC200D41995 /* Task.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		E16B4980279ADD2600D41995 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				E16B4981279ADD3E00D41995 /* TaskViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,6 +171,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				E16B4971279ADC5000D41995 /* ContentView.swift in Sources */,
+				E16B4982279ADD3E00D41995 /* TaskViewModel.swift in Sources */,
+				E16B4984279ADDC400D41995 /* Home.swift in Sources */,
+				E16B497F279ADCC200D41995 /* Task.swift in Sources */,
 				E16B496F279ADC5000D41995 /* TaskManagementApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

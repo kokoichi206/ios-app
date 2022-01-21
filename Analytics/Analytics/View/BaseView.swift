@@ -12,6 +12,8 @@ struct BaseView: View {
     // Using Image Names as Tab...
     @State var currentTab = "home"
     
+    var colorBG = Color.green.opacity(0.1)
+    
     // Hiding Native One..
     init() {
         UITabBar.appearance().isHidden = true
@@ -24,15 +26,19 @@ struct BaseView: View {
             TabView(selection: $currentTab) {
                 
                 Text("Home")
+                    .modifier(BGModifier())
                     .tag("house")
                 
                 Text("Graph")
+                    .modifier(BGModifier())
                     .tag("chart.xyaxis.line")
                 
                 Text("Chat")
+                    .modifier(BGModifier())
                     .tag("equal.square.fill")
                 
                 Text("Settings")
+                    .modifier(BGModifier())
                     .tag("gearshape.fill")
             }
             
@@ -69,7 +75,7 @@ struct BaseView: View {
             .frame(maxWidth: .infinity)
             .background(
             
-                Color.green.opacity(0.1)
+                colorBG
                     .ignoresSafeArea()
             )
         }
@@ -83,7 +89,6 @@ struct BaseView: View {
                 currentTab = image
             }
         } label: {
-//            Image(systemName: "person.crop.circle.badge.plus")
             Image(systemName: image)
                 .resizable()
                 .renderingMode(.template)
@@ -103,3 +108,12 @@ struct BaseView_Previews: PreviewProvider {
     }
 }
 
+// BG Modifier...
+struct BGModifier: ViewModifier {
+    
+    func body(content: Content) -> some View {
+        content
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color.green.opacity(0.1).ignoresSafeArea())
+    }
+}

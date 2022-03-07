@@ -28,3 +28,18 @@ func track() {
     }
 }
 ```
+
+### API通信
+
+#### Combine
+Combine とは Apple 製のリアクティブプログラミングのフレームワーク
+
+大きな概念として以下の２つ
+
+- Publisher
+    - 時系列順にイベントを発火する
+    - さまざまな operator によってイベントを加工して流したり、複数の Publisher を合成して１つのストリームにできる
+- Subscriber
+    - Publisher を subscribe してイベントを受け取る
+    - 返り値の cancellable を保持しておくことで任意のタイミングでキャンセルすることも可能
+

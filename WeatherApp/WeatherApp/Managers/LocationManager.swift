@@ -25,6 +25,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("====== locationManager =====")
+        print(locations)
         location = locations.first?.coordinate
         isLoading = false
     }

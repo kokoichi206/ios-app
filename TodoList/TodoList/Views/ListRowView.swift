@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ListRowView: View {
 
-    let item : ItemModel
+    let item: ItemModel
 
     var body: some View {
         HStack {

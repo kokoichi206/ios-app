@@ -26,3 +26,5 @@ Links
 * [timer](https://www.youtube.com/watch?v=pdYTtbOl9YQ&ab_channel=DesignCode)
 * [analytics](https://www.youtube.com/watch?v=w7ZOxf2Hve4&ab_channel=Kavsoft)
 * [task manager](https://www.youtube.com/watch?v=nKHrsrmA4lM&list=RDCMUCsuV4MRk_aB291SrchUVb4w&index=26&ab_channel=Kavsoft)
+* [Todo list](https://www.youtube.com/watch?v=EPdivac0kwE&ab_channel=SwiftfulThinking)
+    * [App Icon Generator](https://appicon.co/)

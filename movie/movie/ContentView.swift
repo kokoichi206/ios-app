@@ -20,7 +20,7 @@ struct ContentView: View {
         NavigationView {
             
             VStack {
-                Image("placeholder")
+                Image(uiImage: image ?? UIImage(named: "placeholder")!)
                     .resizable()
                     .frame(width: 300, height: 300)
                 
@@ -47,7 +47,7 @@ struct ContentView: View {
             .navigationBarTitle("Camera Demo")
         }
         .sheet(isPresented: $showImagePicker) {
-            Text("MODAL")
+            ImagePicker(image: self.$image, isShown: self.$showImagePicker, sourceType: self.sourceType)
         }
     }
 }

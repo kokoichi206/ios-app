@@ -14,6 +14,7 @@
 		E13D352E27DA27D600C5A601 /* movieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D352D27DA27D600C5A601 /* movieTests.swift */; };
 		E13D353827DA27D600C5A601 /* movieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D353727DA27D600C5A601 /* movieUITests.swift */; };
 		E13D353A27DA27D600C5A601 /* movieUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D353927DA27D600C5A601 /* movieUITestsLaunchTests.swift */; };
+		E13D354727DA37C300C5A601 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D354627DA37C300C5A601 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E13D353327DA27D600C5A601 /* movieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = movieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13D353727DA27D600C5A601 /* movieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieUITests.swift; sourceTree = "<group>"; };
 		E13D353927DA27D600C5A601 /* movieUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = movieUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E13D354627DA37C300C5A601 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				E13D351E27DA27D500C5A601 /* ContentView.swift */,
 				E13D352027DA27D600C5A601 /* Assets.xcassets */,
 				E13D352227DA27D600C5A601 /* Preview Content */,
+				E13D354627DA37C300C5A601 /* ImagePicker.swift */,
 			);
 			path = movie;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13D354727DA37C300C5A601 /* ImagePicker.swift in Sources */,
 				E13D351F27DA27D500C5A601 /* ContentView.swift in Sources */,
 				E13D351D27DA27D500C5A601 /* movieApp.swift in Sources */,
 			);

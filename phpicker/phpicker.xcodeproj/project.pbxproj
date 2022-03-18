@@ -14,6 +14,8 @@
 		E13D356627DA402F00C5A601 /* phpickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D356527DA402F00C5A601 /* phpickerTests.swift */; };
 		E13D357027DA402F00C5A601 /* phpickerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D356F27DA402F00C5A601 /* phpickerUITests.swift */; };
 		E13D357227DA402F00C5A601 /* phpickerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D357127DA402F00C5A601 /* phpickerUITestsLaunchTests.swift */; };
+		E13D357F27DA4C0100C5A601 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D357E27DA4C0100C5A601 /* ViewController.swift */; };
+		E13D358127DA640100C5A601 /* SwiftUIPHPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E13D358027DA640100C5A601 /* SwiftUIPHPicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		E13D356B27DA402F00C5A601 /* phpickerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = phpickerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E13D356F27DA402F00C5A601 /* phpickerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = phpickerUITests.swift; sourceTree = "<group>"; };
 		E13D357127DA402F00C5A601 /* phpickerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = phpickerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E13D357E27DA4C0100C5A601 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E13D358027DA640100C5A601 /* SwiftUIPHPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIPHPicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				E13D355627DA402E00C5A601 /* ContentView.swift */,
 				E13D355827DA402F00C5A601 /* Assets.xcassets */,
 				E13D355A27DA402F00C5A601 /* Preview Content */,
+				E13D357E27DA4C0100C5A601 /* ViewController.swift */,
+				E13D358027DA640100C5A601 /* SwiftUIPHPicker.swift */,
 			);
 			path = phpicker;
 			sourceTree = "<group>";
@@ -257,6 +263,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E13D357F27DA4C0100C5A601 /* ViewController.swift in Sources */,
+				E13D358127DA640100C5A601 /* SwiftUIPHPicker.swift in Sources */,
 				E13D355727DA402E00C5A601 /* ContentView.swift in Sources */,
 				E13D355527DA402E00C5A601 /* phpickerApp.swift in Sources */,
 			);

@@ -9,8 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            NavigationView {
+                List {
+                    NavigationLink(destination: ImageContentView()) {
+                        Text("Images")
+                    }
+                    NavigationLink(destination: VideoContentView()) {
+                        Text("Videos")
+                    }
+                }
+                .navigationTitle("Picker Sample")
+            }
+        }
     }
 }
 

@@ -13,7 +13,7 @@ import PhotosUI
 struct VideoPicker: UIViewControllerRepresentable {
     let configuration: PHPickerConfiguration
     @Binding var isPresented: Bool
-    @Binding var player: AVPlayer?
+    @Binding var players: [AVPlayer]
     @Binding var showingAlert: Bool
     
     func makeUIViewController(context: Context) -> PHPickerViewController {
@@ -63,7 +63,7 @@ struct VideoPicker: UIViewControllerRepresentable {
                     }
                     
                     if let url = url as? URL {
-                        self?.parent.player = AVPlayer(url: url)
+                        self?.parent.players.append(AVPlayer(url: url))
                     }
                 }
             }

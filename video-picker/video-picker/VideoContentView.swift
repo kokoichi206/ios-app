@@ -11,7 +11,8 @@ import PhotosUI
 
 struct VideoContentView: View {
     
-    @State private var player: AVPlayer?
+//    @State private var player: AVPlayer?
+    @State private var players: [AVPlayer] = []
     @State private var isPresented = false
     @State private var showingAlert = false
     
@@ -24,14 +25,22 @@ struct VideoContentView: View {
                 .fixedSize()
 
             ZStack {
-                VideoPlayer(player: player)
+                
+                ScrollView {
+                    VStack {
+                        ForEach(players, id: \.self) { player in
+                            VideoPlayer(player: player)
+                                .frame(width: 300, height: 100)
+                        }
+                    }
+                }
 
                 Rectangle()
                     .onTapGesture {
                         isPresented.toggle()
                     }
                     .foregroundColor(.black)
-                    .opacity(player != nil ? 0 : 1.0)
+                    .opacity(players != [] ? 0 : 1.0)
             }
             
             Spacer(minLength: 20)
@@ -56,7 +65,7 @@ struct VideoContentView: View {
         
         return VideoPicker(configuration: configuraton,
                            isPresented: $isPresented,
-                           player: $player,
+                           players: $players,
                            showingAlert: $showingAlert)
     }
 }

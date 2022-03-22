@@ -88,7 +88,8 @@ struct MiniPlayer: View {
     
     // Getting Frame And Opacity While Dragging
     func getFrame() -> CGFloat {
-        
+        return 250
+
         let progress = player.offset / (player.height - 100)
         
         print(progress)

@@ -58,6 +58,12 @@ struct Home: View {
         if gestureOffset >= 0 && !player.isMiniPlayer && player.offset + 70 <= player.height {
             withAnimation(.default) {
                 player.offset = gestureOffset
+                
+                if player.offset > 300 {
+                    player.offset = 0
+                    player.isMiniPlayer = false
+                    player.showPlayer = false
+                }
             }
         }
     }

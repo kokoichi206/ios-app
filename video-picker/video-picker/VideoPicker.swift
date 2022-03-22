@@ -62,8 +62,18 @@ struct VideoPicker: UIViewControllerRepresentable {
                         return
                     }
                     
+                    print("url: \(url)")
+
                     if let url = url as? URL {
                         self?.parent.players.append(AVPlayer(url: url))
+                    
+//                        DataManager.saveURL(fileName: "test", url: url)
+                        do{
+                            let videoData = try Data(contentsOf: url)
+                            try FilesManager().save(fileNamed: "test", data: videoData)
+                        } catch {
+                            return
+                        }
                     }
                 }
             }

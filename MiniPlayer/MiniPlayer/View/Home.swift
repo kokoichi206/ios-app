@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct Home: View {
+    
+    @StateObject var player = VideoPlayerViewModel()
+    
+    // Gesture State to avoid Drag Gesture Glitches...
+    @GestureState var gestureOffset: CGFloat = 0
+    
     var body: some View {
         
         ZStack(alignment: .bottom) {
@@ -19,12 +25,56 @@ struct Home: View {
                     ForEach(videos){video in
                         
                         VideoCardView(video: video)
+                            .onTapGesture {
+                                withAnimation {
+                                    player.showPlayer.toggle()
+                                }
+                            }
                     }
                 }
             }
             
             // Video Player View....
-            MiniPlayer()
+            if player.showPlayer{
+                MiniPlayer()
+                    .transition(.move(edge: .bottom))
+                    .offset(y: player.offset)
+                    .gesture(
+                        DragGesture()
+                            .updating($gestureOffset, body: { value, state, _ in
+                                state = value.translation.height
+                            })
+                            .onEnded(onEnd(value: )))
+            }
+        }
+        .onChange(of: gestureOffset) { value in
+            onChanged()
+        }
+        .environmentObject(player)
+    }
+    
+    func onChanged() {
+        
+        if gestureOffset >= 0 && !player.isMiniPlayer && player.offset + 70 <= player.height {
+            withAnimation(.default) {
+                player.offset = gestureOffset
+            }
+        }
+    }
+    
+    func onEnd(value: DragGesture.Value) {
+        withAnimation(.default){
+
+            if !player.isMiniPlayer{
+                
+                player.offset = 0
+                
+                if value.translation.height > UIScreen.main.bounds.height / 3 {
+                    player.isMiniPlayer = true
+                } else {
+                    player.isMiniPlayer = false
+                }
+            }
         }
     }
 }

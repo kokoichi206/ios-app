@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Button: View {
+struct ButtonTest: View {
     var body: some View {
         VStack {
             Text("Button")
@@ -44,6 +44,6 @@ struct Button: View {
 
 struct Button_Previews: PreviewProvider {
     static var previews: some View {
-        Button()
+        ButtonTest()
     }
 }

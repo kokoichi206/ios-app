@@ -14,6 +14,7 @@
 		E134E01A27F1FB930014B369 /* ExpenseTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E01927F1FB930014B369 /* ExpenseTrackerTests.swift */; };
 		E134E02427F1FB930014B369 /* ExpenseTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E02327F1FB930014B369 /* ExpenseTrackerUITests.swift */; };
 		E134E02627F1FB930014B369 /* ExpenseTrackerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E02527F1FB930014B369 /* ExpenseTrackerUITestsLaunchTests.swift */; };
+		E134E03527F1FCF80014B369 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E03427F1FCF80014B369 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E134E01F27F1FB930014B369 /* ExpenseTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E134E02327F1FB930014B369 /* ExpenseTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerUITests.swift; sourceTree = "<group>"; };
 		E134E02527F1FB930014B369 /* ExpenseTrackerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E134E03427F1FCF80014B369 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				E134E00A27F1FB920014B369 /* ContentView.swift */,
 				E134E00C27F1FB930014B369 /* Assets.xcassets */,
 				E134E00E27F1FB930014B369 /* Preview Content */,
+				E134E03427F1FCF80014B369 /* Extensions.swift */,
 			);
 			path = ExpenseTracker;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E134E00B27F1FB920014B369 /* ContentView.swift in Sources */,
+				E134E03527F1FCF80014B369 /* Extensions.swift in Sources */,
 				E134E00927F1FB920014B369 /* ExpenseTrackerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

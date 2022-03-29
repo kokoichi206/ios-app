@@ -34,6 +34,7 @@ struct ContentView: View {
             }
         }
         .navigationViewStyle(.stack)
+        .accentColor(.primary)  // change back button color
     }
 }
 

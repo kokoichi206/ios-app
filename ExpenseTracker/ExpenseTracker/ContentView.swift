@@ -24,18 +24,21 @@ struct ContentView: View {
                     
                     // MARK: Chart
                     let data = transactionListViewModel.accumulateTransactions()
-                    let totalExpenses = data.last?.1 ?? 0
-                    CardView {
-                        VStack {
-                            ChartLabel(totalExpenses.formatted(.currency(code: "USD")), type: .title)
+                    
+                    if !data.isEmpty {
+                        let totalExpenses = data.last?.1 ?? 0
+                        CardView {
+                            VStack(alignment: .leading) {
+                                ChartLabel(totalExpenses.formatted(.currency(code: "USD")), type: .title, format: "$%.02f")
 
-                            LineChart()
+                                LineChart()
+                            }
+                            .background(Color.systemBackground)
                         }
-                        .background(Color.systemBackground)
+                        .data(data)
+                        .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon.opacity(0.4), Color.icon)))
+                        .frame(height: 300)
                     }
-                    .data(data)
-                    .chartStyle(ChartStyle(backgroundColor: Color.systemBackground, foregroundColor: ColorGradient(Color.icon.opacity(0.4), Color.icon)))
-                    .frame(height: 300)
 
                     RecentTransactionList()
                 }

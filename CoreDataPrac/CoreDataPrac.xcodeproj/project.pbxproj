@@ -16,6 +16,7 @@
 		E134E0B027F495C70014B369 /* CoreDataPracUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E0AF27F495C70014B369 /* CoreDataPracUITestsLaunchTests.swift */; };
 		E134E0BE27F495EF0014B369 /* CoreDataPrac.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E134E0BC27F495EF0014B369 /* CoreDataPrac.xcdatamodeld */; };
 		E134E0C127F4970C0014B369 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E0C027F4970C0014B369 /* CoreDataManager.swift */; };
+		E134E0C327F49C2A0014B369 /* MovieDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E0C227F49C2A0014B369 /* MovieDetail.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		E134E0AF27F495C70014B369 /* CoreDataPracUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataPracUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		E134E0BD27F495EF0014B369 /* CoreDataPrac.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataPrac.xcdatamodel; sourceTree = "<group>"; };
 		E134E0C027F4970C0014B369 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E134E0C227F49C2A0014B369 /* MovieDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetail.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				E134E09627F495C70014B369 /* Assets.xcassets */,
 				E134E09827F495C70014B369 /* Preview Content */,
 				E134E0BC27F495EF0014B369 /* CoreDataPrac.xcdatamodeld */,
+				E134E0C227F49C2A0014B369 /* MovieDetail.swift */,
 			);
 			path = CoreDataPrac;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			files = (
 				E134E09527F495C70014B369 /* ContentView.swift in Sources */,
 				E134E0BE27F495EF0014B369 /* CoreDataPrac.xcdatamodeld in Sources */,
+				E134E0C327F49C2A0014B369 /* MovieDetail.swift in Sources */,
 				E134E0C127F4970C0014B369 /* CoreDataManager.swift in Sources */,
 				E134E09327F495C70014B369 /* CoreDataPracApp.swift in Sources */,
 			);

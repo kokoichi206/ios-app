@@ -56,4 +56,15 @@ class CoreDataManager {
             print("Failed to save context \(error.localizedDescription)")
         }
     }
+    
+    func updateMovie() {
+                
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            print("Failed to save context \(error.localizedDescription)")
+        }
+    }
+    
 }

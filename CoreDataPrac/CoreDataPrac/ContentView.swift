@@ -14,6 +14,7 @@ struct ContentView: View {
     // NOt a good idea to use state to populate data
     // from third party call
     @State private var movies: [Movie] = [Movie]()
+    @State private var needRefresh: Bool = false
     
     private func populateMovies() {
         movies = coreDM.getAllMovies()
@@ -34,7 +35,11 @@ struct ContentView: View {
                 List{
                     
                     ForEach(movies, id: \.self) {movie in
-                        Text(movie.title ?? "")
+                        NavigationLink {
+                            MovieDetail(movie: movie, coreDM: coreDM, needRefresh: $needRefresh)
+                        } label: {
+                            Text(movie.title ?? "")
+                        }
                     }.onDelete { indexSet in
                         indexSet.forEach { index in
                             let movie = movies[index]
@@ -44,6 +49,8 @@ struct ContentView: View {
                         }
                     }
                 }
+                .listStyle(PlainListStyle())
+                .accentColor(needRefresh ? .white: .black)
                 
                 Spacer()
             }

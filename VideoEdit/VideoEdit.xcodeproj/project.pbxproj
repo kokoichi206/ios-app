@@ -14,6 +14,9 @@
 		E134E12C27F627B30014B369 /* VideoEditTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E12B27F627B30014B369 /* VideoEditTests.swift */; };
 		E134E13627F627B30014B369 /* VideoEditUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E13527F627B30014B369 /* VideoEditUITests.swift */; };
 		E134E13827F627B30014B369 /* VideoEditUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E13727F627B30014B369 /* VideoEditUITestsLaunchTests.swift */; };
+		E134E14527F6283D0014B369 /* VideoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E14427F6283D0014B369 /* VideoController.swift */; };
+		E134E14927F62C400014B369 /* RectOnVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E134E14827F62C400014B369 /* RectOnVideo.swift */; };
+		E134E14D27F67B7D0014B369 /* test.MOV in Resources */ = {isa = PBXBuildFile; fileRef = E134E14C27F67B7D0014B369 /* test.MOV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +47,9 @@
 		E134E13127F627B30014B369 /* VideoEditUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoEditUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E134E13527F627B30014B369 /* VideoEditUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditUITests.swift; sourceTree = "<group>"; };
 		E134E13727F627B30014B369 /* VideoEditUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoEditUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		E134E14427F6283D0014B369 /* VideoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoController.swift; sourceTree = "<group>"; };
+		E134E14827F62C400014B369 /* RectOnVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectOnVideo.swift; sourceTree = "<group>"; };
+		E134E14C27F67B7D0014B369 /* test.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; path = test.MOV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +80,7 @@
 		E134E10E27F627B10014B369 = {
 			isa = PBXGroup;
 			children = (
+				E134E14C27F67B7D0014B369 /* test.MOV */,
 				E134E11927F627B10014B369 /* VideoEdit */,
 				E134E12A27F627B30014B369 /* VideoEditTests */,
 				E134E13427F627B30014B369 /* VideoEditUITests */,
@@ -98,6 +105,8 @@
 				E134E11C27F627B10014B369 /* ContentView.swift */,
 				E134E11E27F627B30014B369 /* Assets.xcassets */,
 				E134E12027F627B30014B369 /* Preview Content */,
+				E134E14427F6283D0014B369 /* VideoController.swift */,
+				E134E14827F62C400014B369 /* RectOnVideo.swift */,
 			);
 			path = VideoEdit;
 			sourceTree = "<group>";
@@ -233,6 +242,7 @@
 			files = (
 				E134E12227F627B30014B369 /* Preview Assets.xcassets in Resources */,
 				E134E11F27F627B30014B369 /* Assets.xcassets in Resources */,
+				E134E14D27F67B7D0014B369 /* test.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +268,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				E134E11D27F627B10014B369 /* ContentView.swift in Sources */,
+				E134E14527F6283D0014B369 /* VideoController.swift in Sources */,
+				E134E14927F62C400014B369 /* RectOnVideo.swift in Sources */,
 				E134E11B27F627B10014B369 /* VideoEditApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

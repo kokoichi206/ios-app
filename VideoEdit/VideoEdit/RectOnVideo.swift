@@ -74,6 +74,14 @@ struct RectOnVideo: View {
     }
 }
 
+struct rectangle {
+    
+    var x: CGFloat
+    var y: CGFloat
+    var width: CGFloat
+    var height: CGFloat
+}
+
 struct PlayerView: UIViewRepresentable {
     
     var url_: URL
@@ -84,7 +92,33 @@ struct PlayerView: UIViewRepresentable {
     func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
     }
     func makeUIView(context: Context) -> UIView {
-        return PlayerUIView(frame: .zero, url: url_)
+//        let rectUrl = movieTest(offsetX: 0.0, offsetY: 0.0, ratio: 1.0)
+        let image = UIImage(named: "cat.png")!
+
+        let movie = MovieCreator()
+        //16の倍数
+        let movieSize = CGSize(width:320, height:320)
+        // time / 60 秒表示する
+        let time = AVURLAsset(url: url_).duration.seconds
+
+        let coordinates = [
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+        ]
+
+        var imageArray: [UIImage] = [image, image, image, image, image, image, image, image, image]
+        
+        //動画を生成
+//        let movieURL = movie.create(images:imageArray, size:movieSize, time:Int(time))
+//        print("movieURL: \(movieURL)")
+        
+        let movieURL = movieTest(url: url_, coordinates: coordinates)
+        
+        return PlayerUIView(frame: .zero, url: url_, rectUrl: movieURL)
     }
 }
 
@@ -149,8 +183,8 @@ class PlayerUIViewPortrait: UIView {
         }
     
         print("===== offset =====")
-        print(offsetX)
-        print(offsetY)
+//        print(offsetX)
+//        print(offsetY)
         
         let x = 341.0
         let y = 170.6
@@ -183,8 +217,6 @@ class PlayerUIViewPortrait: UIView {
         rect.path = line.cgPath
         
         layer.addSublayer(rect)
-        
-//        print(player.currentTime())
     }
     
     required init?(coder: NSCoder) {
@@ -201,93 +233,20 @@ class PlayerUIView: UIView {
     private let playerLayer = AVPlayerLayer()
     private let rectPlayerLayer = AVPlayerLayer()
 
-    init(frame: CGRect, url: URL) {
+    init(frame: CGRect, url: URL, rectUrl: URL) {
         super.init(frame: frame)
         
-        print("the duration of main movie")
-        print(AVURLAsset(url: url).duration.seconds)
+        // メインの動画。
+        player = AVPlayer(url: url)
+        player.play()
+        playerLayer.player = player
+        layer.addSublayer(playerLayer)
 
-//        player = AVPlayer(url: url)
-//        player.play()
-//
-//        playerLayer.player = player
-//        layer.addSublayer(playerLayer)
-        // 完全に中央揃えになってる場合（TODO: 要チェック）
-        print("UIScreen ")
-        print(UIScreen.main.bounds.width)
-        print(UIScreen.main.bounds.height)
-        print(playerLayer.videoRect.width)
-        print(playerLayer.frame.height)
-        
-//        var offsetX = (UIScreen.main.bounds.width - playerLayer.frame.width) / 2
-//        var offsetY = (UIScreen.main.bounds.height - playerLayer.frame.height) / 2
-//
-        var offsetX = (UIScreen.main.bounds.width) / 2
-        var offsetY = (UIScreen.main.bounds.height) / 2
-      
-        
-        var ratio: CGFloat = 0.0
-
-        // 親が全画面である必要がある
-        let track = player.currentItem?.asset.tracks(withMediaType: .video).first
-        if let track = track {
-            let trackSize = track.naturalSize
-            let videoViewSize = playerLayer.bounds.size
-
-            print("===== track =====")
-            print(trackSize)
-            print(trackSize.width)
-            print(trackSize.height)
-            print(videoViewSize)
-            // TODO: fix this calc
-            if (trackSize.width > UIScreen.main.bounds.width) {
-                offsetX = 0
-                offsetY = (UIScreen.main.bounds.height - trackSize.height * UIScreen.main.bounds.width / trackSize.width) / 2
-            } else {
-                offsetX = (UIScreen.main.bounds.width - trackSize.width) / 2
-                offsetY = 0
-            }
-            ratio = UIScreen.main.bounds.width / trackSize.width
-        }
-    
-        print("===== offset =====")
-        print(offsetX)
-        print(offsetY)
-
-        let rectUrl = movieTest(offsetX: offsetX, offsetY: offsetY, ratio: ratio)
-        print("rectUrl: \(rectUrl)")
-
+        // 四角形のレイヤー。
         rectPlayer = AVPlayer(url: rectUrl)
-        print(rectUrl)
-
-        Thread.sleep(forTimeInterval: 1)
-
         rectPlayer.play()
-        print("size of rectPlayer")
-
         rectPlayerLayer.player = rectPlayer
-        print(rectPlayer.currentTime())
-        print(rectPlayer.currentItem?.asset.tracks(withMediaType: .video))
-        print(rectPlayerLayer.frame.width)
-
         layer.addSublayer(rectPlayerLayer)
-
-        
-//        // Rectangle
-//        let rectFrame: CGRect = CGRect(x:CGFloat(0), y:CGFloat(0), width:CGFloat(100), height:CGFloat(50))
-
-//        // Create a UIView object which use above CGRect object.
-//        let greenView = UIView(frame: rectFrame)
-//
-//        // Set UIView background color.
-//        greenView.backgroundColor = UIColor.green
-//
-//        layer.addSublayer(greenView.layer)
-
-        
-//        layer.addSublayer(rect)
-        
-//        print(player.currentTime())
     }
     
     required init?(coder: NSCoder) {
@@ -297,18 +256,70 @@ class PlayerUIView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         playerLayer.frame = bounds
+        rectPlayerLayer.frame = bounds
+    }
+}
+
+extension UIImage {
+    class func image(from layer: CALayer) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(layer.bounds.size,
+        layer.isOpaque, UIScreen.main.scale)
+
+        defer { UIGraphicsEndImageContext() }
+
+        // Don't proceed unless we have context
+        guard let context = UIGraphicsGetCurrentContext() else {
+            return nil
+        }
+
+        layer.render(in: context)
+        return UIGraphicsGetImageFromCurrentImageContext()
+    }
+}
+
+func movieTest(url: URL, coordinates: [rectangle]) -> URL {
+    var offsetX = (UIScreen.main.bounds.width) / 2
+    var offsetY = (UIScreen.main.bounds.height) / 2
+  
+    
+    var ratio: CGFloat = 0.0
+    
+    var parentWidth = 0.0
+    var parentHeight = 0.0
+
+    // 親が全画面である必要がある
+    let track = AVPlayer(url: url).currentItem?.asset.tracks(withMediaType: .video).first
+    if let track = track {
+        let trackSize = track.naturalSize
+
+        print("===== track =====")
+        print(trackSize)
+        parentWidth = trackSize.width
+        parentHeight = trackSize.height
+        // TODO: fix this calc
+        if (trackSize.width > UIScreen.main.bounds.width) {
+            offsetX = 0
+            offsetY = (UIScreen.main.bounds.height - trackSize.height * UIScreen.main.bounds.width / trackSize.width) / 2
+        } else {
+            offsetX = (UIScreen.main.bounds.width - trackSize.width) / 2
+            offsetY = 0
+        }
+        ratio = UIScreen.main.bounds.width / trackSize.width
     }
     
-    func movieTest(offsetX: CGFloat, offsetY: CGFloat, ratio: CGFloat) -> URL {
-        let x = 341.0
-        let y = 170.6
-        let rawWidth = 580.0
-        let rawHeight = 341.0
+    var imageArray: [UIImage] = []
+    
+    for coordinate in coordinates {
+        print(parentWidth)
+        let x = coordinate.x
+        let y = coordinate.y
+        let rawWidth = coordinate.width
+        let rawHeight = coordinate.height
 
-//        let startX = offsetX + x * ratio
-//        let startY = offsetY + y * ratio
-        let startX = x * ratio
-        let startY = y * ratio
+        let startX = offsetX + x * ratio
+        let startY = offsetY + y * ratio
+//        let startX = 0.0
+//        let startY = 0.0
         let width = rawWidth * ratio
         let height = rawHeight * ratio
         let lineWidth = 5.0
@@ -328,95 +339,49 @@ class PlayerUIView: UIView {
         shapeLayer.fillColor = .none
         shapeLayer.strokeColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
         shapeLayer.path = rect.cgPath
-
-//        let diameter: CGFloat = 100
-//        let rect = CGRect(origin: CGPoint.zero,
-//                          size: CGSize(width: diameter, height: diameter))
-//
-//        let shapeLayer = CAShapeLayer()
-//        shapeLayer.fillColor = UIColor.white.cgColor
-//        shapeLayer.lineWidth = 10
-//        shapeLayer.path = CGPath(ellipseIn: rect,
-//                                 transform: nil)
+        shapeLayer.backgroundColor = UIColor.clear.cgColor
         
-//        let image = UIImage.imageWithLayer(layer: rect)
-//        let image = UIImage.image(from: rect)
-
         var renderer = UIGraphicsImageRenderer(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
-//        let renderer = UIGraphicsImageRenderer(size: rect.size)
-         renderer = UIGraphicsImageRenderer(size: CGSize(width: 320, height: 320))
-             
-        var image = renderer.image {
+        let format = UIGraphicsImageRendererFormat.default()
+        format.opaque = true
+
+//        var renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512), format: format)
+
+        let image = renderer.image {
             context in
-            print("renderer.image")
+
 
             return shapeLayer.render(in: context.cgContext)
         }
         
-        image = UIImage(named: "cat.png")!
-
-        let movie = MovieCreator()
-        //16の倍数
-        let movieSize = CGSize(width:320, height:320)
-        // time / 60 秒表示する
-        let time = 6009
-
-        var imageArray: [UIImage] = [image, image, image, image, image, image, image, image, image]
-//        if image != nil {
-//            imageArray = [image!]
-//            print("imageArray: \(imageArray)")
-//        } else {
-//            print("imageArray: image is nil")
-//        }
-        
-        //動画を生成
-        let movieURL = movie.create(images:imageArray,size:movieSize,time:time)
-        print("movieURL: \(movieURL)")
-        
-//        Thread.sleep(forTimeInterval: 1000)
-        
-        print("end of sleep, WAKE UP!!")
-        
-        let track = AVURLAsset(url: movieURL).tracks(withMediaType: AVMediaType.video).first
-        if track != nil {
-            let size = track?.naturalSize.applying(track!.preferredTransform)
-            print("dims of created movie:")
-            print(size)
-            print("duration of created movie:")
-            print(AVURLAsset(url: movieURL).duration.seconds)
-            print("")
-        }
-        
-        return movieURL
+        imageArray.append(contentsOf: [image])
+        // チェック用！
+//        imageArray.append(contentsOf: [UIImage(named: "cat.png")!])
     }
-}
+    
+//    image = UIImage(named: "cat.png")!
 
-//extension UIImage {
-//    class func imageWithLayer(layer: CALayer) -> UIImage {
-//        UIGraphicsBeginImageContextWithOptions(layer.bounds.size, layer.isOpaque, 0.0)
-//        layer.render(in: UIGraphicsGetCurrentContext())
-//        let img = UIGraphicsGetImageFromCurrentImageContext() ?? nil
-//        UIGraphicsEndImageContext()
-//        return img!
+    let movie = MovieCreator()
+    //16の倍数
+    let movieSize = CGSize(width:320, height:320)
+    // time / 60 秒表示する
+    let time = 600
+
+    //動画を生成
+    let movieURL = movie.create(images:imageArray,size:movieSize,time:time)
+    print("movieURL: \(movieURL)")
+            
+//    let track = AVURLAsset(url: movieURL).tracks(withMediaType: AVMediaType.video).first
+//    if track != nil {
+//        let size = track?.naturalSize.applying(track!.preferredTransform)
+//        print("dims of created movie:")
+//        print(size)
+//        print("duration of created movie: \(AVURLAsset(url: movieURL).duration.seconds)")
+//        print("")
 //    }
-//}
-extension UIImage {
-    class func image(from layer: CALayer) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(layer.bounds.size,
-        layer.isOpaque, UIScreen.main.scale)
-
-        defer { UIGraphicsEndImageContext() }
-
-        // Don't proceed unless we have context
-        guard let context = UIGraphicsGetCurrentContext() else {
-            return nil
-        }
-
-        layer.render(in: context)
-        return UIGraphicsGetImageFromCurrentImageContext()
-    }
+    
+    return movieURL
 }
-
 
 
 struct RectOnVideo_Previews: PreviewProvider {

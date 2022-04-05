@@ -69,6 +69,7 @@ class MovieCreator: NSObject {
         
         // 各画像の表示する時間
         let durationForEachImage = time
+        print("各画像の表示する時間： \(durationForEachImage)")
         
         // FPS
         let fps: __int32_t = 60
@@ -78,6 +79,7 @@ class MovieCreator: NSObject {
             print("iyo")
             
             if (!adaptor.assetWriterInput.isReadyForMoreMediaData) {
+                print("break!, !adaptor.assetWriterInput.isReadyForMoreMediaData")
                 break
             }
             

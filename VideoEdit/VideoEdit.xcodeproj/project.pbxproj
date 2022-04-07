@@ -20,6 +20,8 @@
 		E1AD80FA27F7F158008FDD30 /* MovieCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD80F927F7F158008FDD30 /* MovieCreator.swift */; };
 		E1AD810327F93C9C008FDD30 /* ok.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AD810227F93C9C008FDD30 /* ok.png */; };
 		E1AD810727FB3F62008FDD30 /* cat.png in Resources */ = {isa = PBXBuildFile; fileRef = E1AD810627FB3F62008FDD30 /* cat.png */; };
+		E1AD810927FEB5B3008FDD30 /* MaskingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD810827FEB5B3008FDD30 /* MaskingTest.swift */; };
+		E1AD810B27FEB741008FDD30 /* VideoCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AD810A27FEB741008FDD30 /* VideoCreator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +58,8 @@
 		E1AD80F927F7F158008FDD30 /* MovieCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieCreator.swift; sourceTree = "<group>"; };
 		E1AD810227F93C9C008FDD30 /* ok.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ok.png; sourceTree = "<group>"; };
 		E1AD810627FB3F62008FDD30 /* cat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cat.png; sourceTree = "<group>"; };
+		E1AD810827FEB5B3008FDD30 /* MaskingTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaskingTest.swift; sourceTree = "<group>"; };
+		E1AD810A27FEB741008FDD30 /* VideoCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCreator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +120,8 @@
 				E134E14427F6283D0014B369 /* VideoController.swift */,
 				E134E14827F62C400014B369 /* RectOnVideo.swift */,
 				E1AD80F927F7F158008FDD30 /* MovieCreator.swift */,
+				E1AD810827FEB5B3008FDD30 /* MaskingTest.swift */,
+				E1AD810A27FEB741008FDD30 /* VideoCreator.swift */,
 			);
 			path = VideoEdit;
 			sourceTree = "<group>";
@@ -282,6 +288,8 @@
 				E134E11D27F627B10014B369 /* ContentView.swift in Sources */,
 				E134E14527F6283D0014B369 /* VideoController.swift in Sources */,
 				E134E14927F62C400014B369 /* RectOnVideo.swift in Sources */,
+				E1AD810B27FEB741008FDD30 /* VideoCreator.swift in Sources */,
+				E1AD810927FEB5B3008FDD30 /* MaskingTest.swift in Sources */,
 				E134E11B27F627B10014B369 /* VideoEditApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

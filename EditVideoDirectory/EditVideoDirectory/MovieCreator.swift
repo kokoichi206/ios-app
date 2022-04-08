@@ -69,7 +69,6 @@ class MovieCreator: NSObject {
         
         // 各画像の表示する時間
         let durationForEachImage = 1
-        print("各画像の表示する時間： \(durationForEachImage)")
         
         // FPS
         let fps: __int32_t = __int32_t(frameRate)

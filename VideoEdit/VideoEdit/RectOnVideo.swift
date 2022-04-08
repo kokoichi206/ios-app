@@ -103,11 +103,11 @@ struct PlayerView: UIViewRepresentable {
 
         let coordinates = [
             rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
-            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
-            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
-            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
-            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
-            rectangle(x: 341.0, y: 170.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 180.1, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 185.1, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 333.3, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 333.6, width: 580.0, height: 341.0),
+            rectangle(x: 341.0, y: 333.6, width: 580.0, height: 341.0),
         ]
 
         var imageArray: [UIImage] = [image, image, image, image, image, image, image, image, image]
@@ -264,6 +264,8 @@ extension UIImage {
     class func image(from layer: CALayer) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.bounds.size,
         layer.isOpaque, UIScreen.main.scale)
+//        UIGraphicsBeginImageContextWithOptions(layer.bounds.size,
+//                                               false, UIScreen.main.scale)
 
         defer { UIGraphicsEndImageContext() }
 
@@ -341,22 +343,64 @@ func movieTest(url: URL, coordinates: [rectangle]) -> URL {
         shapeLayer.path = rect.cgPath
         shapeLayer.backgroundColor = UIColor.clear.cgColor
         
-        var renderer = UIGraphicsImageRenderer(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
+//        var renderer = UIGraphicsImageRenderer(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height))
         let format = UIGraphicsImageRendererFormat.default()
+        
+        // α
         format.opaque = true
 
-//        var renderer = UIGraphicsImageRenderer(size: CGSize(width: 512, height: 512), format: format)
+        var renderer = UIGraphicsImageRenderer(size: CGSize(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height), format: format)
 
-        let image = renderer.image {
-            context in
+        var image = renderer.image { context in
+//            draw(image: frame, in: context.cgContext)
+            context.cgContext.clear(shapeLayer.bounds)
+            
 
-
+//            let size = renderer.format.bounds.size
+//            UIColor.white.withAlphaComponent(0).setFill()
+//            context.cgContext.fill(CGRect(x: 0, y: 0, width: size.width, height: size.height))
             return shapeLayer.render(in: context.cgContext)
+                
+            //            shapeLayer.render(in: context.cgContext)
+            //            UIGraphicsGetImageFromCurrentImageContext()
+            //            for _ in 0...50 {
+            //                let rect = CGRect(
+            //                    x: .random(in: 0...300),
+            //                    y: .random(in: 0...600),
+            //                    width: .random(in: 50...100),
+            //                    height: .random(in: 50...100)
+            //                )
+            //
+            //                let color = UIColor(
+            //                    red: .random(in: 0...1),
+            //                    green: .random(in: 0...1),
+            //                    blue: .random(in: 0...1),
+            //                    alpha: 1.0
+            //                )
+            //                color.setFill()
+            //                context.cgContext.fillEllipse(in: rect)
+            //            }
         }
+//        image.withBackground(color: UIColor.clear)
         
-        imageArray.append(contentsOf: [image])
+        image = UIImage(named: "cat.png")!
+        
+        let colorMasking: [CGFloat] = [0, 50, 0, 50, 0, 50]
+        print(image.cgImage!)
+        guard let cgImage = image.cgImage?.copy(maskingColorComponents: colorMasking) else {
+            print("nilnil")
+            continue }
+
+        let returnImage = UIImage(cgImage: cgImage)
+//        let cgImage = image.cgImage?.copy(maskingColorComponents: colorMasking)
+//        print(cgImage)
+//        image = UIImage(cgImage: cgImage!)
+//        image = image.copy(maskingColorComponents: colorMasking) as! UIImage
+//        print(returnImage.cgImage!)
+//        imageArray.append(contentsOf: [returnImage])
         // チェック用！
 //        imageArray.append(contentsOf: [UIImage(named: "cat.png")!])
+        imageArray.append(contentsOf: [returnImage])
     }
     
 //    image = UIImage(named: "cat.png")!
@@ -380,7 +424,25 @@ func movieTest(url: URL, coordinates: [rectangle]) -> URL {
 //        print("")
 //    }
     
-    return movieURL
+    return createVideo(images: imageArray)!
+//    return movieURL
+}
+
+extension UIImage {
+  func withBackground(color: UIColor, opaque: Bool = true) -> UIImage {
+    UIGraphicsBeginImageContextWithOptions(size, opaque, scale)
+        
+    guard let ctx = UIGraphicsGetCurrentContext(), let image = cgImage else { return self }
+    defer { UIGraphicsEndImageContext() }
+        
+    let rect = CGRect(origin: .zero, size: size)
+    ctx.setFillColor(color.cgColor)
+    ctx.fill(rect)
+    ctx.concatenate(CGAffineTransform(a: 1, b: 0, c: 0, d: -1, tx: 0, ty: size.height))
+    ctx.draw(image, in: rect)
+        
+    return UIGraphicsGetImageFromCurrentImageContext() ?? self
+  }
 }
 
 

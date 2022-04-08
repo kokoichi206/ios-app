@@ -89,9 +89,13 @@ class MovieCreator: NSObject {
             let second = CMTimeGetSeconds(frameTime)
             print(second)
             
-            let resize = resizeImage(image: image, contentSize: size)
+//            let resize = resizeImage(image: image, contentSize: size)
+            let resize = image
+
             // CGImageからBufferを生成
             buffer = self.pixelBufferFromCGImage(cgImage: resize.cgImage!)
+            print("resize.cgImage")
+            print(resize.cgImage)
             
             // 生成したBufferを追加
             if (!adaptor.append(buffer!, withPresentationTime: frameTime)) {

@@ -11,6 +11,7 @@ import UIKit
 
 struct RectOnVideo: View {
     
+    // 親動画。
     var moviePath: URL = Bundle.main.url(forResource: "test", withExtension: "MOV")!
     @State var player: AVPlayer? = nil
     @State var createdURL: URL? = nil
@@ -41,12 +42,9 @@ struct RectOnVideo: View {
                     }
                     .padding()
                     .onAppear {
-                        // 親動画。
-                        let path = Bundle.main.path(forResource: "test", ofType:"MOV")
-                        let fileUrl = NSURL(fileURLWithPath: path!)
                         // 加工プロセス。
                         let handler = CreateURLWithRectHandler(url: $createdURL)
-                        handler.main(fileUrl: fileUrl as URL)
+                        handler.main(fileUrl: moviePath)
                     }
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                 }
@@ -90,7 +88,7 @@ struct CreateURLWithRectHandler {
         // FIXME: このフレームレートを30とかにすると次のエラーで落ちる。。。
         // terminated due to memory issue
         // UIImageか何かのメモリを解放する必要がありそう。。。
-        let frameRate = 3  // per seconds
+        let frameRate = 30  // per seconds
 
         var frameForTimes = [NSValue]()
         let sampleCounts = Int(videoDuration.seconds * Double(frameRate))
@@ -108,7 +106,7 @@ struct CreateURLWithRectHandler {
                 if let image = image {
     //                    print(requestedTime.value, requestedTime.seconds, actualTime.value)
                     frames.append(UIImage(cgImage: image))
-//                    print(frames.count)
+                    print(frames.count)
                     // TODO: この条件式で良い？
                     if (frames.count == sampleCounts) {
                         createURLFromImages(uiImages: frames, frameRate: frameRate)
@@ -122,8 +120,12 @@ struct CreateURLWithRectHandler {
         print("time: \(String(describing: time))")
         
         let newImages = uiImages.map { uiImage in
-            overlayRectangle(uiImage: uiImage)
+            autoreleasepool {
+                overlayRectangle(uiImage: uiImage)
+            }
+//            overlayRectangle(uiImage: uiImage)
         }
+//        let newImages = uiImages
 
         let movie = MovieCreator()
         //16の倍数。
@@ -139,6 +141,7 @@ struct CreateURLWithRectHandler {
      UIImageに対して四角形を重ねる。
      */
     func overlayRectangle(uiImage: UIImage) -> UIImage {
+//        return uiImage
         var offsetX = (UIScreen.main.bounds.width) / 2
         var offsetY = (UIScreen.main.bounds.height) / 2
 
@@ -184,24 +187,25 @@ struct CreateURLWithRectHandler {
             // 親画像
             uiImage.draw(in: videoRect)
             
-            // FIXME: 計算方法を確立させたい。。。
-            // 四角形の描画。座標の計算が難しい。
-            let rect = UIBezierPath()
-            rect.move(to: CGPoint(x: startX, y: startY))
-            rect.addLine(to:CGPoint(x: startX + width, y: startY))
-            rect.addLine(to:CGPoint(x: startX + width, y: startY + height))
-            rect.addLine(to:CGPoint(x: startX, y: startY + height))
-            rect.addLine(to:CGPoint(x: startX, y: startY))
-            rect.close()
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.lineWidth = lineWidth
-            shapeLayer.fillColor = .none
-            shapeLayer.strokeColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
-            shapeLayer.path = rect.cgPath
-            shapeLayer.backgroundColor = UIColor.clear.cgColor
-            shapeLayer.render(in: context.cgContext)
-
+//            // FIXME: 計算方法を確立させたい。。。
+//            // 四角形の描画。座標の計算が難しい。
+//            let rect = UIBezierPath()
+//            rect.move(to: CGPoint(x: startX, y: startY))
+//            rect.addLine(to:CGPoint(x: startX + width, y: startY))
+//            rect.addLine(to:CGPoint(x: startX + width, y: startY + height))
+//            rect.addLine(to:CGPoint(x: startX, y: startY + height))
+//            rect.addLine(to:CGPoint(x: startX, y: startY))
+//            rect.close()
+//            let shapeLayer = CAShapeLayer()
+//            shapeLayer.lineWidth = lineWidth
+//            shapeLayer.fillColor = .none
+//            shapeLayer.strokeColor = .init(red: 1, green: 0, blue: 0, alpha: 1)
+//            shapeLayer.path = rect.cgPath
+//            shapeLayer.backgroundColor = UIColor.clear.cgColor
+//            shapeLayer.render(in: context.cgContext)
         }
+        print(img.size.width)
+        print(img.size.height)
         return img
     }
 }

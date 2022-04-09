@@ -84,22 +84,35 @@ class MovieCreator: NSObject {
             // 動画の時間を生成(その画像の表示する時間/開始時点と表示時間を渡す)
             let frameTime: CMTime = CMTimeMake(value: Int64(__int32_t(frameCount) * __int32_t(durationForEachImage)), timescale: fps)
             //時間経過を確認(確認用)
-            let second = CMTimeGetSeconds(frameTime)
-            
-//            let resize = resizeImage(image: image, contentSize: size)
-            let resize = image
-
-            // CGImageからBufferを生成
-            buffer = self.pixelBufferFromCGImage(cgImage: resize.cgImage!)
-            
-            // 生成したBufferを追加
-            if (!adaptor.append(buffer!, withPresentationTime: frameTime)) {
-                // Error!
-                print("adaptError")
-                print(videoWriter.error!)
+                
+            autoreleasepool {
+                // 生成したBufferを追加
+                if (!adaptor.append(self.pixelBufferFromCGImage(cgImage: image.cgImage!), withPresentationTime: frameTime)) {
+                    // Error!
+                    print("adaptError")
+                    print(videoWriter.error!)
+                }
             }
+//            // 生成したBufferを追加
+//            if (!adaptor.append(self.pixelBufferFromCGImage(cgImage: image.cgImage!), withPresentationTime: frameTime)) {
+//                // Error!
+//                print("adaptError")
+//                print(videoWriter.error!)
+//            }
+                
+//            // CGImageからBufferを生成
+//            buffer = self.pixelBufferFromCGImage(cgImage: resize.cgImage!)
+//
+//            // 生成したBufferを追加
+//            if (!adaptor.append(buffer!, withPresentationTime: frameTime)) {
+//                // Error!
+//                print("adaptError")
+//                print(videoWriter.error!)
+//            }
             
             frameCount += 1
+            print(frameCount)
+            sleep(1)
         }
         print("frameCount: \(frameCount)")
         

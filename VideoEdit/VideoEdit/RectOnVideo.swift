@@ -36,6 +36,7 @@ struct RectOnVideo: View {
     
     var moviePath: URL = Bundle.main.url(forResource: "test", withExtension: "MOV")!
     @State var isVertical = true
+    @State 
     
     var body: some View {
         ZStack {
@@ -67,6 +68,11 @@ struct RectOnVideo: View {
                     Text("Play Slow")
                 })
             }
+            
+            Rectangle()
+                .stroke(Color.blue, lineWidth: 5)
+                .frame(width: 100, height: 100)
+                .offset(x: 10, y: 20)
         }
         .ignoresSafeArea(.all)
         .frame(maxWidth: .infinity, maxHeight: .infinity)

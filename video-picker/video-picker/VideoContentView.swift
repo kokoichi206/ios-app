@@ -89,7 +89,7 @@ struct VideoContentView: View {
 
                 
                 Button("tap to show PHPicker") {
-                    isPresented.toggle()
+                    self.isPresented.toggle()
                 }
                 
                 

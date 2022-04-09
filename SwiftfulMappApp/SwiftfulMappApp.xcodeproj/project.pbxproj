@@ -9,16 +9,16 @@
 /* Begin PBXBuildFile section */
 		E1BD7C74280189E5005B2689 /* SwiftfulMappAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD7C73280189E5005B2689 /* SwiftfulMappAppApp.swift */; };
 		E1BD7C76280189E5005B2689 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD7C75280189E5005B2689 /* ContentView.swift */; };
-		E1BD7C78280189E7005B2689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C77280189E7005B2689 /* Assets.xcassets */; };
 		E1BD7C7B280189E7005B2689 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C7A280189E7005B2689 /* Preview Assets.xcassets */; };
+		E1BD7C8228018A8A005B2689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C8128018A8A005B2689 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		E1BD7C70280189E5005B2689 /* SwiftfulMappApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftfulMappApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BD7C73280189E5005B2689 /* SwiftfulMappAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftfulMappAppApp.swift; sourceTree = "<group>"; };
 		E1BD7C75280189E5005B2689 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		E1BD7C77280189E7005B2689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1BD7C7A280189E7005B2689 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E1BD7C8128018A8A005B2689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,7 +53,10 @@
 			children = (
 				E1BD7C73280189E5005B2689 /* SwiftfulMappAppApp.swift */,
 				E1BD7C75280189E5005B2689 /* ContentView.swift */,
-				E1BD7C77280189E7005B2689 /* Assets.xcassets */,
+				E1BD7C832801995A005B2689 /* Views */,
+				E1BD7C8428019961005B2689 /* ViewModels */,
+				E1BD7C852801996A005B2689 /* Models */,
+				E1BD7C8128018A8A005B2689 /* Assets.xcassets */,
 				E1BD7C79280189E7005B2689 /* Preview Content */,
 			);
 			path = SwiftfulMappApp;
@@ -65,6 +68,27 @@
 				E1BD7C7A280189E7005B2689 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E1BD7C832801995A005B2689 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		E1BD7C8428019961005B2689 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		E1BD7C852801996A005B2689 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -125,8 +149,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1BD7C8228018A8A005B2689 /* Assets.xcassets in Resources */,
 				E1BD7C7B280189E7005B2689 /* Preview Assets.xcassets in Resources */,
-				E1BD7C78280189E7005B2689 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

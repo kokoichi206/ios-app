@@ -12,6 +12,7 @@
 		E1BD7C5A28015C00005B2689 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C5928015C00005B2689 /* Assets.xcassets */; };
 		E1BD7C5D28015C00005B2689 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C5C28015C00005B2689 /* Preview Assets.xcassets */; };
 		E1BD7C6428015C15005B2689 /* RectOnVideo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1BD7C6328015C15005B2689 /* RectOnVideo.swift */; };
+		E1BD7C6628015CB8005B2689 /* test.MOV in Resources */ = {isa = PBXBuildFile; fileRef = E1BD7C6528015CB8005B2689 /* test.MOV */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +22,7 @@
 		E1BD7C5928015C00005B2689 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1BD7C5C28015C00005B2689 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		E1BD7C6328015C15005B2689 /* RectOnVideo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectOnVideo.swift; sourceTree = "<group>"; };
+		E1BD7C6528015CB8005B2689 /* test.MOV */ = {isa = PBXFileReference; lastKnownFileType = video.quicktime; name = test.MOV; path = ../VideoEdit/test.MOV; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +39,7 @@
 		E1BD7C4928015BFF005B2689 = {
 			isa = PBXGroup;
 			children = (
-				E1BD7C6328015C15005B2689 /* RectOnVideo.swift */,
+				E1BD7C6528015CB8005B2689 /* test.MOV */,
 				E1BD7C5428015BFF005B2689 /* RectUsingSwiftUI */,
 				E1BD7C5328015BFF005B2689 /* Products */,
 			);
@@ -57,6 +59,7 @@
 				E1BD7C5528015BFF005B2689 /* RectUsingSwiftUIApp.swift */,
 				E1BD7C5728015BFF005B2689 /* ContentView.swift */,
 				E1BD7C5928015C00005B2689 /* Assets.xcassets */,
+				E1BD7C6328015C15005B2689 /* RectOnVideo.swift */,
 				E1BD7C5B28015C00005B2689 /* Preview Content */,
 			);
 			path = RectUsingSwiftUI;
@@ -130,6 +133,7 @@
 			files = (
 				E1BD7C5D28015C00005B2689 /* Preview Assets.xcassets in Resources */,
 				E1BD7C5A28015C00005B2689 /* Assets.xcassets in Resources */,
+				E1BD7C6628015CB8005B2689 /* test.MOV in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

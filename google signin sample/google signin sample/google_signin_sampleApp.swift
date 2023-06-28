@@ -15,7 +15,7 @@ struct google_signin_sampleApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootView()
         }
     }
 }
